@@ -1,0 +1,45 @@
+<h2>Clients</h2>
+<table mat-table [dataSource]="clientes" class="mat-elevation-z8" style="width:
+    100%;">
+    <ng-container matColumnDef="sharedkey">
+        <th mat-header-cell *matHeaderCellDef>Shared Key</th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.sharedKey}} </td>
+    </ng-container>
+    <ng-container matColumnDef="bussinessId">
+        <th mat-header-cell *matHeaderCellDef>BussinessId</th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.bussinessId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.email}} </td>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef>Phone</th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.phone}} </td>
+    </ng-container>
+    <ng-container matColumnDef="creationDate">
+        <th mat-header-cell *matHeaderCellDef>CreationDate</th>
+        <td mat-cell *matCellDef="let cliente"> {{cliente.creationDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let cliente">
+            <a mat-icon-button [routerLink]="['/clientes/editar', cliente.id]">
+                <mat-icon color="primary">edit</mat-icon>
+            </a>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="eliminar">
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+        <td mat-cell *matCellDef="let cliente">
+            <button (click)="eliminarCliente(cliente)" mat-icon-button>
+                <mat-icon color="warn">delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['sharedKey', 'bussinessId', 'email', 'phone', 'creationDate','editar',
+        'eliminar']"></tr>
+    <tr mat-row *matRowDef="let fila; columns: ['sharedKey', 'bussinessId', 'email', 'phone', 'creationDate',
+        'editar', 'eliminar'];"></tr>
+</table>
