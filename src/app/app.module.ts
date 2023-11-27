@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { AgregarClienteComponent } from './components/agregar-cliente/agregar-cliente.component';
-import { BuscarClienteComponent } from './components/buscar-cliente/buscar-cliente.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogConfirmComponent } from './components/dialogs/dialog-confirm/dialog-confirm.component';
@@ -20,16 +19,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { EditarClienteComponent } from './components/editar-cliente/editar-cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientesComponent,
     AgregarClienteComponent,
-    BuscarClienteComponent,
-    DialogConfirmComponent
-  ],  entryComponents: [
+    DialogConfirmComponent,
+    EditarClienteComponent
+  ],
+  entryComponents: [
     DialogConfirmComponent,
   ],
   imports: [
@@ -48,7 +49,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HttpClientModule,
     MatTableModule,
     MatDialogModule,
-    MatSnackBarModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,37 +1,35 @@
-
 <div class="contenedor-padre">
-  <mat-toolbar class="barra"  >
+  <mat-toolbar class="barra">
     <mat-toolbar-row>
+      <button (click)="cajon.toggle()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
       <button mat-icon-button>
         <mat-icon class="logo"></mat-icon>
-      </button>      
+      </button>
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-sidenav-container class="contenido">
-    <mat-sidenav style="min-width: 300px;" #cajon mode="side">
+    <mat-sidenav style="min-width: 300px;" #cajon mode="side" opened="true">
       <mat-nav-list>
-        <a mat-list-item routerLink="/clientes/agregar">
-          <mat-icon color="accent">add</mat-icon>
-          Clientes
-        </a>
         <a mat-list-item routerLink="/clientes">
-          <mat-icon color="primary">pets</mat-icon>
+          <mat-icon color="primary">person_outline</mat-icon>
           Clientes
         </a>
-        <a mat-list-item routerLink="/clientes/agregar">
-          <mat-icon color="accent">add</mat-icon>
+        <a mat-list-item >
+          <mat-icon></mat-icon>
           Cliente look History
         </a>
-        <a mat-list-item routerLink="/clientes/agregar">
-          <mat-icon color="accent">add</mat-icon>
+        <a mat-list-item>
+          <mat-icon></mat-icon>
           Emergency PIN configuration
         </a>
-        <a mat-list-item routerLink="/clientes/agregar">
-          <mat-icon color="accent">add</mat-icon>
+        <a mat-list-item >
+          <mat-icon></mat-icon>
           Emergency PIN History
         </a>
       </mat-nav-list>
-     
+
     </mat-sidenav>
     <mat-sidenav-content class="padding-10">
       <router-outlet></router-outlet>

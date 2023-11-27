@@ -16,8 +16,15 @@ export class ClienteService {
     return this.http.get(`${this.baseUrl}/clientes`);
   }
 
-  getCliente(sharedkey: string | string) {
-    return this.http.get(`${this.baseUrl}/clientes/${sharedkey}`);
+  postClientesByAdvanceSearch(cliente: ClienteDTO) {
+    return this.http.post(`${this.baseUrl}/clientes/advancesearch`, cliente);
+  }
+
+  getClienteById(cliente: ClienteDTO) {
+    return this.http.get(`${this.baseUrl}/clientes/id/${cliente.id}`);
+  }
+  getClienteBySharedKey(sharedKey: string | string) {
+    return this.http.get(`${this.baseUrl}/clientes/sharedkey/${sharedKey}`);
   }
 
   addCliente(cliente: ClienteDTO) {
@@ -29,6 +36,6 @@ export class ClienteService {
   }
 
   updateCliente(cliente: ClienteDTO) {
-    return this.http.put(`${this.baseUrl}//clientes/`, cliente);
+    return this.http.put(`${this.baseUrl}/clientes/${cliente.id}`, cliente);
   }
 }

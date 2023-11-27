@@ -1,16 +1,81 @@
+<!-- Botones de crear nuevo y exportar -->
+<div class="demo-button-container">
+    <button mat-raised-button (click)="agregarCliente()" class="demo-button">
+        <mat-icon>add</mat-icon>
+        New
+    </button>
+    <button mat-raised-button (click)="generateUserCSV()" class="demo-button">
+        Export
+    </button>
+</div>
+<div class="demo-button-container">
+    <td>
+        <mat-form-field>
+            <input matInput name="search" [(ngModel)]="search" class="example-full-width" type="text"
+                placeholder="Enter shared key">
+        </mat-form-field>
+        <button mat-raised-button (click)="buscarClienteBySharedKey()" class="demo-button">
+            Search
+        </button>
+    </td>
+    <td>
+        <button mat-raised-button (click)="toggleDisplayDiv()" class="demo-button">
+            Advanced Search
+        </button>
+
+    </td>
+</div>
+
+<!-- Busqueda avanzada de cliente -->
+<div *ngIf="isShowDiv" class="demo-button-container container-border">
+    <p>
+        <mat-form-field>
+
+            <input matInput name="bussinessId" [(ngModel)]="clienteModel.bussinessId" type="text"
+                placeholder="BussinessId">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput name="phone" [(ngModel)]="clienteModel.phone" type="number" placeholder="Phone">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput name="email" [(ngModel)]="clienteModel.email" type="text" placeholder="Email">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput name="startdate" [(ngModel)]="clienteModel.startDate" type="date" placeholder="Start Date">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput name="enddate" [(ngModel)]="clienteModel.endDate" type="date" placeholder="End Date">
+        </mat-form-field>
+    </p>
+    <button mat-raised-button (click)="buscarClienteByAdvanceSearch()" class="demo-button">
+        Ok
+    </button>
+</div>
+<p></p>
+<p></p>
+
+<!-- Tabla de clientes -->
 <h2>Clients</h2>
 <table mat-table [dataSource]="clientes" class="mat-elevation-z8" style="width:
     100%;">
-    <ng-container matColumnDef="sharedkey">
+    <ng-container matColumnDef="sharedKey">
         <th mat-header-cell *matHeaderCellDef>Shared Key</th>
         <td mat-cell *matCellDef="let cliente"> {{cliente.sharedKey}} </td>
     </ng-container>
     <ng-container matColumnDef="bussinessId">
-        <th mat-header-cell *matHeaderCellDef>BussinessId</th>
+        <th mat-header-cell *matHeaderCellDef>Bussiness Id</th>
         <td mat-cell *matCellDef="let cliente"> {{cliente.bussinessId}} </td>
     </ng-container>
     <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <th mat-header-cell *matHeaderCellDef>E-mail</th>
         <td mat-cell *matCellDef="let cliente"> {{cliente.email}} </td>
     </ng-container>
     <ng-container matColumnDef="phone">
@@ -18,13 +83,13 @@
         <td mat-cell *matCellDef="let cliente"> {{cliente.phone}} </td>
     </ng-container>
     <ng-container matColumnDef="creationDate">
-        <th mat-header-cell *matHeaderCellDef>CreationDate</th>
+        <th mat-header-cell *matHeaderCellDef>Creation Date</th>
         <td mat-cell *matCellDef="let cliente"> {{cliente.creationDate}} </td>
     </ng-container>
     <ng-container matColumnDef="editar">
         <th mat-header-cell *matHeaderCellDef>Editar</th>
         <td mat-cell *matCellDef="let cliente">
-            <a mat-icon-button [routerLink]="['/clientes/editar', cliente.id]">
+            <a mat-icon-button (click)="editarCliente(cliente)">
                 <mat-icon color="primary">edit</mat-icon>
             </a>
         </td>
